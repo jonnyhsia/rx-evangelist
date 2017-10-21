@@ -21,4 +21,8 @@
         <item name="android:windowBackground">@mipmap/splash_screen</item>
     </style>
 
+    <style name="AppTheme.NoTitle.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="AppTheme.NoTitle.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
 </resources>

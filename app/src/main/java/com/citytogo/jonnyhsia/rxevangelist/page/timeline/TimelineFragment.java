@@ -25,7 +25,6 @@ public class TimelineFragment extends BaseFragment implements TimelineContract.V
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class TimelineFragment extends BaseFragment implements TimelineContract.V
     }
 
     @Override
-    public void bindPresenter(TimelineContract.Presenter presenter) {
+    public void bindPresenter(@NonNull TimelineContract.Presenter presenter) {
         mPresenter = presenter;
     }
 

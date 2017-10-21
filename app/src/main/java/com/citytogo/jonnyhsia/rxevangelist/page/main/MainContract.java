@@ -1,5 +1,7 @@
 package com.citytogo.jonnyhsia.rxevangelist.page.main;
 
+import android.support.annotation.NonNull;
+
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Category;
 import com.citytogo.jonnyhsia.rxevangelist.page.base.BasePresenter;
 import com.citytogo.jonnyhsia.rxevangelist.page.base.BaseView;
@@ -14,7 +16,7 @@ public class MainContract {
 
     interface View extends BaseView<Presenter> {
 
-        void initData(List<Category> categoryList);
+        void initData(@NonNull List<Category> categoryList);
     }
 
     interface Presenter extends BasePresenter {

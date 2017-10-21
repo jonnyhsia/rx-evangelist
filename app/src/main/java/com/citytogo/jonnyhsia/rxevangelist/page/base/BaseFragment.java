@@ -1,6 +1,7 @@
 package com.citytogo.jonnyhsia.rxevangelist.page.base;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import butterknife.Unbinder;
@@ -17,7 +18,7 @@ public class BaseFragment extends Fragment {
         getActivity().onBackPressed();
     }
 
-    public void jump(Class<?> cls) {
+    public void jump(@NonNull Class<?> cls) {
         startActivity(new Intent(getActivity(), cls));
     }
 

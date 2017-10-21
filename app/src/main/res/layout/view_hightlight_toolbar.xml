@@ -31,7 +31,7 @@
             android:id="@+id/tvSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="2dp"
             android:fontFamily="sans-serif-medium"
             android:letterSpacing="0.05"
@@ -43,8 +43,8 @@
 
     <ImageView
         android:id="@+id/imgButton"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_gravity="center_vertical|end"
         android:scaleType="centerCrop"
         tools:src="@mipmap/rx_purple"/>

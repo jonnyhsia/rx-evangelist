@@ -1,6 +1,7 @@
 package com.citytogo.jonnyhsia.rxevangelist.page.main;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -59,13 +60,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     }
 
     @Override
-    public void initData(List<Category> categoryList) {
+    public void initData(@NonNull List<Category> categoryList) {
         mAdapter.setItems(categoryList);
         mAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void bindPresenter(MainContract.Presenter presenter) {
+    public void bindPresenter(@NonNull MainContract.Presenter presenter) {
         mPresenter = presenter;
     }
 

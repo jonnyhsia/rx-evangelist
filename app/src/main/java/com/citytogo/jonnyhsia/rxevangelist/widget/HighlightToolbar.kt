@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.citytogo.jonnyhsia.rxevangelist.R
 
 /**
@@ -30,7 +32,10 @@ class HighlightToolbar : FrameLayout {
         set(value) {
             if (value != -1) {
                 field = value
-                mImgButton?.setImageResource(value)
+                Glide.with(this)
+                        .load(value)
+                        .apply(RequestOptions().circleCrop())
+                        .into(mImgButton)
             }
         }
 

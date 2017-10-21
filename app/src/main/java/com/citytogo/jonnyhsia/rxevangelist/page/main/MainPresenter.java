@@ -2,6 +2,8 @@ package com.citytogo.jonnyhsia.rxevangelist.page.main;
 
 import com.citytogo.jonnyhsia.rxevangelist.model.PageService;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Category;
+import com.citytogo.jonnyhsia.rxevangelist.page.simple.SimpleRxActivity;
+import com.citytogo.jonnyhsia.rxevangelist.page.timeline.TimelineActivity;
 
 import java.util.List;
 
@@ -33,6 +35,18 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void clickCategory(int pos) {
-        // TODO: 17/10/21
+        Class<?> cls = null;
+        switch (pos) {
+            case 0:
+                cls = SimpleRxActivity.class;
+                break;
+            case 1:
+                cls = TimelineActivity.class;
+            default:
+                break;
+        }
+        if (cls != null) {
+            mView.jump(cls);
+        }
     }
 }
