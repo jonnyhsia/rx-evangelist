@@ -1,12 +1,52 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.citytogo.jonnyhsia.rxevangelist.page.main.MainFragment">
+<com.citytogo.jonnyhsia.rxevangelist.widget.StickyLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.main.MainFragment">
 
-    <TextView
+    <com.citytogo.jonnyhsia.rxevangelist.widget.HighlightToolbar
+        android:id="@id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:highlightTitle="RxEvangelist"
+        app:icon="@mipmap/rx_purple"
+        tools:highlightSubTitle="October.21, 2017"/>
+
+    <EditText
+        android:id="@id/stickyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_search_bar"
+        android:cursorVisible="false"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@string/roboto_medium"
+        android:gravity="center_vertical"
+        android:hint="@string/search_bar"
+        android:letterSpacing="0.05"
+        android:longClickable="false"
+        android:minHeight="@dimen/search_bar_height"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:textColorHint="@color/text_ignorable"
+        android:textSize="14sp"
+        android:transitionName="@string/transition_search_bar"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:clipToPadding="false"
+        android:paddingBottom="24dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        tools:listitem="@layout/item_category"/>
 
-</FrameLayout>
+</com.citytogo.jonnyhsia.rxevangelist.widget.StickyLayout>

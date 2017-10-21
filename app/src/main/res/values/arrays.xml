@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item name="category_simple">Simple Rx Sample</item>
+        <item name="category_retrofit">Rx + Retrofit Sample</item>
+        <item name="category_complex">Complex Http Request Sample</item>
+        <item name="category_operators">Operators Sample</item>
+        <item name="category_debounce">Debounce Sample</item>
+        <item name="category_kotlin">Rx + Kotlin Sample</item>
+    </string-array>
+</resources>

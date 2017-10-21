@@ -1,10 +1,11 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">#333333</item>
     </style>
 
     <style name="AppTheme.NoTitle">
@@ -12,12 +13,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.NoTitle.Splash">
-        <item name="android:windowBackground">@mipmap/splash_screen</item>
+    <style name="AppTheme.NoTitle.FullVision">
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar"/>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark"/>
+    <style name="AppTheme.NoTitle.FullVision.Splash">
+        <item name="android:windowBackground">@mipmap/splash_screen</item>
+    </style>
 
 </resources>

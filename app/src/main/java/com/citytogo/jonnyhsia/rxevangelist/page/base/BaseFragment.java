@@ -3,17 +3,31 @@ package com.citytogo.jonnyhsia.rxevangelist.page.base;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import butterknife.Unbinder;
+
 /**
  * Created by JonnyHsia on 17/10/20.
+ * Fragment 基类
  */
 public class BaseFragment extends Fragment {
 
-    void goBack() {
+    protected Unbinder mUnbinder;
+
+    public void goBack() {
         getActivity().onBackPressed();
     }
 
-    void jump(Class<?> cls) {
+    public void jump(Class<?> cls) {
         startActivity(new Intent(getActivity(), cls));
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // 解绑
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
+    }
 }
