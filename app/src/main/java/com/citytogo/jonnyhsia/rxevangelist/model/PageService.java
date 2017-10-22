@@ -1,14 +1,13 @@
 package com.citytogo.jonnyhsia.rxevangelist.model;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.StringRes;
-
 import com.citytogo.jonnyhsia.rxevangelist.App;
 import com.citytogo.jonnyhsia.rxevangelist.R;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Category;
+import com.citytogo.jonnyhsia.rxevangelist.page.retrofit.RetrofitActivity;
+import com.citytogo.jonnyhsia.rxevangelist.page.simple.SimpleRxActivity;
+import com.citytogo.jonnyhsia.rxevangelist.page.timeline.TimelineActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,10 +27,13 @@ public class PageService {
         int[] backgrounds = new int[]{
                 R.drawable.shape_red, R.drawable.shape_orange, R.drawable.shape_green,
                 R.drawable.shape_blue, R.drawable.shape_purple, R.drawable.shape_grey};
+        Class<?>[] clsArray = new Class[]{
+                SimpleRxActivity.class, RetrofitActivity.class, SimpleRxActivity.class,
+                SimpleRxActivity.class, TimelineActivity.class, SimpleRxActivity.class};
 
         List<Category> categoryList = new ArrayList<>(titles.length);
         for (int i = 0; i < titles.length; i++) {
-            categoryList.add(new Category(titles[i], foregrounds[i], backgrounds[i]));
+            categoryList.add(new Category(titles[i], foregrounds[i], backgrounds[i], clsArray[i]));
         }
         return categoryList;
     }

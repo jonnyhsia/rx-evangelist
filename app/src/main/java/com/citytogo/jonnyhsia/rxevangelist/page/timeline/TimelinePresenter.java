@@ -1,6 +1,6 @@
 package com.citytogo.jonnyhsia.rxevangelist.page.timeline;
 
-import com.citytogo.jonnyhsia.rxevangelist.model.StoryService;
+import com.citytogo.jonnyhsia.rxevangelist.model.RetrofitService;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Story;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.List;
 public class TimelinePresenter implements TimelineContract.Presenter {
 
     private TimelineContract.View mView;
-    private StoryService mStoryModel;
+    private RetrofitService mStoryModel;
     private String mUsername;
     private int offset = 1;
 
-    public TimelinePresenter(TimelineContract.View view, StoryService storyModel, String username) {
+    public TimelinePresenter(TimelineContract.View view, RetrofitService storyModel, String username) {
         mView = view;
         mView.bindPresenter(this);
         mStoryModel = storyModel;
@@ -30,7 +30,7 @@ public class TimelinePresenter implements TimelineContract.Presenter {
     @Override
     public void requestTimeline() {
         int limit = 20;
-        mStoryModel.getTimeline(mUsername, offset, limit, new StoryService.OnTimelineRequestListener() {
+        mStoryModel.getTimeline(mUsername, offset, limit, new RetrofitService.OnTimelineRequestListener() {
             @Override
             public void onSuccess(List<Story> data) {
                 // 判断数据是否为 null 或 empty

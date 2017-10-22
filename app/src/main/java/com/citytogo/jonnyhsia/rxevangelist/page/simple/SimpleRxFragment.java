@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.citytogo.jonnyhsia.rxevangelist.R;
@@ -35,7 +36,10 @@ public class SimpleRxFragment extends BaseFragment implements SimpleRxContract.V
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_simple_rx, container, false);
         mUnbinder = ButterKnife.bind(this, view);
+
+        mTvConsole.setDebug(false);
         mTvPageTitle.setText(R.string.page_title_simple_rx);
+
         return view;
     }
 
@@ -49,17 +53,40 @@ public class SimpleRxFragment extends BaseFragment implements SimpleRxContract.V
         goBack();
     }
 
-    @OnClick({R.id.btn_simple_rx, R.id.btn_animate_text})
+    @OnClick({R.id.btn_clear, R.id.btn_simple_create, R.id.btn_simple_rx, R.id.btn_animate_text})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.btn_clear:
+                mPresenter.clearConsole();
+                break;
+            case R.id.btn_simple_create:
+                mPresenter.simpleCreate();
+                break;
             case R.id.btn_simple_rx:
+                mPresenter.simpleJust();
                 break;
             case R.id.btn_animate_text:
-                mTvConsole.appendLog("typing effect...");
+                mPresenter.clickAnimateButton();
                 break;
         }
     }
-    
+
+    @Override
+    public void showLog(String log) {
+        mTvConsole.appendLog(log);
+    }
+
+    @Override
+    public void showAnimateLog(String log) {
+        mTvConsole.appendLog(log, true);
+    }
+
+    @Override
+    public void showConsoleCleared() {
+        mTvConsole.clearLog(getString(R.string.console_ready));
+    }
+
+
     public SimpleRxFragment() {
 
     }

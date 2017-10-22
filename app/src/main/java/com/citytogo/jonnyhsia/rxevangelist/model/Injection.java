@@ -45,11 +45,19 @@ public class Injection {
                 .build();
     }
 
-    public static StoryService getStoryService() {
-        return new StoryService();
+    public static RetrofitService getStoryService() {
+        return new RetrofitService();
     }
 
     public static PageService getPageService() {
         return new PageService();
+    }
+
+    public static SimpleRxService getSimpleRxService() {
+        return new SimpleRxService();
+    }
+
+    public static RetrofitService getRetrofitService() {
+        return new RetrofitService();
     }
 }

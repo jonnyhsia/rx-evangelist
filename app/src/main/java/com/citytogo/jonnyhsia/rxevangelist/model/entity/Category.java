@@ -9,16 +9,19 @@ import android.support.annotation.DrawableRes;
 public class Category {
     private String mTitle;
 
-    private @DrawableRes
-    int mForegroundRes;
+    @DrawableRes
+    private int mForegroundRes;
 
-    private @DrawableRes
-    int mBackgroundRes;
+    @DrawableRes
+    private int mBackgroundRes;
 
-    public Category(String title, int foregroundRes, int backgroundRes) {
+    private Class<?> mClass;
+
+    public Category(String title, int foregroundRes, int backgroundRes, Class<?> cls) {
         mTitle = title;
         mForegroundRes = foregroundRes;
         mBackgroundRes = backgroundRes;
+        mClass = cls;
     }
 
     public String getTitle() {
@@ -43,5 +46,13 @@ public class Category {
 
     public void setBackgroundRes(int backgroundRes) {
         mBackgroundRes = backgroundRes;
+    }
+
+    public Class<?> getCls() {
+        return mClass;
+    }
+
+    public void setCls(Class<?> cls) {
+        mClass = cls;
     }
 }

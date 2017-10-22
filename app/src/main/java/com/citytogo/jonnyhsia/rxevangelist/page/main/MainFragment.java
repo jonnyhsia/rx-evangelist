@@ -49,8 +49,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         CategoryItemBinder binder = new CategoryItemBinder();
         binder.setOnCategoryClickListener(new CategoryItemBinder.OnCategoryClickListener() {
             @Override
-            public void onClicked(int pos) {
-                mPresenter.clickCategory(pos);
+            public void onClicked(Class<?> cls) {
+                mPresenter.clickCategory(cls);
             }
         });
         mAdapter.register(Category.class, binder);

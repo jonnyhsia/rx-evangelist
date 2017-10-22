@@ -23,6 +23,6 @@ public class MainContract {
 
         void setUpRecyclerView();
 
-        void clickCategory(int pos);
+        void clickCategory(@NonNull Class<?> pos);
     }
 }

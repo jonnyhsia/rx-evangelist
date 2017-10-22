@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.simple.SimpleRxFragment">
+    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.retrofit.RetrofitFragment">
 
     <include layout="@layout/app_bar_back"/>
 
@@ -29,25 +29,11 @@
             android:src="@mipmap/ic_close"/>
 
         <Button
-            android:id="@+id/btn_simple_create"
+            android:id="@+id/btn_request_timeline"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Use Create"/>
-
-        <Button
-            android:id="@+id/btn_simple_rx"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Use Just"/>
-
-        <Button
-            android:id="@+id/btn_animate_text"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Animate Text"/>
+            android:text="Request Timeline"/>
 
     </com.nex3z.flowlayout.FlowLayout>
 

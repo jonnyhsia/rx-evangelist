@@ -16,8 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by JonnyHsia on 17/10/21.
  */
-
-public class StoryService {
+public class RetrofitService {
 
     private static final String BASE_URL_STORY = "http://139.224.238.88:8080/story/";
 

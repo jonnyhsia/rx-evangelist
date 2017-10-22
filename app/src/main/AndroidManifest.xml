@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.citytogo.jonnyhsia.rxevangelist">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -22,6 +24,8 @@
         <activity android:name=".page.timeline.TimelineActivity">
         </activity>
         <activity android:name=".page.simple.SimpleRxActivity">
+        </activity>
+        <activity android:name=".page.retrofit.RetrofitActivity">
         </activity>
     </application>
 

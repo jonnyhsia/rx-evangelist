@@ -13,4 +13,6 @@ public interface BaseView<P> {
     void goBack();
 
     void bindPresenter(@NonNull P presenter);
+
+    void showMessage(String msg);
 }

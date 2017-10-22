@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import com.citytogo.jonnyhsia.rxevangelist.App;
+import com.citytogo.jonnyhsia.rxevangelist.helper.ToastUtil;
+
 import butterknife.Unbinder;
 
 /**
@@ -30,5 +33,9 @@ public class BaseFragment extends Fragment {
         if (mUnbinder != null) {
             mUnbinder.unbind();
         }
+    }
+
+    public void showMessage(String message) {
+        ToastUtil.showToast(App.getInstance(), message);
     }
 }

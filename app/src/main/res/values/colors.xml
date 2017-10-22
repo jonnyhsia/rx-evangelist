@@ -34,6 +34,6 @@
     <color name="search_bar">#F9F9F9</color>
     <color name="search_bar_pressed">#F2F2F2</color>
 
-    <color name="console_highlight">#3BEB84</color>
+    <color name="consoleHighlight">#3BEB84</color>
 
 </resources>

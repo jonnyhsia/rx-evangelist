@@ -1,5 +1,7 @@
 package com.citytogo.jonnyhsia.rxevangelist.page.main;
 
+import android.support.annotation.NonNull;
+
 import com.citytogo.jonnyhsia.rxevangelist.model.PageService;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Category;
 import com.citytogo.jonnyhsia.rxevangelist.page.simple.SimpleRxActivity;
@@ -33,19 +35,7 @@ class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void clickCategory(int pos) {
-        Class<?> cls = null;
-        switch (pos) {
-            case 0:
-                cls = SimpleRxActivity.class;
-                break;
-            case 1:
-                cls = TimelineActivity.class;
-            default:
-                break;
-        }
-        if (cls != null) {
-            mView.jump(cls);
-        }
+    public void clickCategory(@NonNull Class<?> cls) {
+        mView.jump(cls);
     }
 }

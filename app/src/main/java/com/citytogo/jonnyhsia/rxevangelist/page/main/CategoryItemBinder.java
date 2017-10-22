@@ -30,7 +30,7 @@ public class CategoryItemBinder extends ItemViewBinder<Category, CategoryItemBin
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final VH holder, @NonNull Category item) {
+    protected void onBindViewHolder(@NonNull final VH holder, @NonNull final Category item) {
         holder.tvCategory.setText(item.getTitle());
         holder.imgCategory.setBackgroundResource(item.getBackgroundRes());
         Glide.with(holder.itemView)
@@ -41,7 +41,7 @@ public class CategoryItemBinder extends ItemViewBinder<Category, CategoryItemBin
             @Override
             public void onClick(View v) {
                 if (mOnCategoryClickListener != null) {
-                    mOnCategoryClickListener.onClicked(holder.getAdapterPosition());
+                    mOnCategoryClickListener.onClicked(item.getCls());
                 }
             }
         });
@@ -69,6 +69,6 @@ public class CategoryItemBinder extends ItemViewBinder<Category, CategoryItemBin
 
     interface OnCategoryClickListener {
 
-        void onClicked(int pos);
+        void onClicked(Class<?> cls);
     }
 }
