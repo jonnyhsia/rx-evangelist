@@ -1,5 +1,7 @@
 package com.citytogo.jonnyhsia.rxevangelist.model.entity;
 
+import com.citytogo.jonnyhsia.rxevangelist.helper.Kits;
+
 /**
  * Created by JonnyHsia on 17/10/21.
  * Story POJO
@@ -16,7 +18,15 @@ public class Story {
     @Override
     public String toString() {
         return String.format("ID: %s;\nTitle: %s;\nContent: %s;\nAuthor: %s;\nCreateTime: %s",
-                storyId, title, content, author, createTime);
+                storyId, title, getContentLite(), author, createTime);
+    }
+
+    private String getContentLite() {
+        String s = Kits.deleteBlankSpace(content);
+        if (s.length() > 50) {
+            return s.substring(0, 50) + "…";
+        }
+        return content;
     }
 
     public String getStoryId() {

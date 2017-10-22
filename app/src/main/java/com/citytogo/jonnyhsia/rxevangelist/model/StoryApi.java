@@ -3,7 +3,6 @@ package com.citytogo.jonnyhsia.rxevangelist.model;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Response;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Story;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;

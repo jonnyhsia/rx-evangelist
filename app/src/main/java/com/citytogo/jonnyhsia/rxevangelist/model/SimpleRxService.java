@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class SimpleRxService {
 
     public void useJust(final OnSubscribeListener listener) {
-        Observable.just(1, 2, 3, 4, 5, 6)
+        Observable.just(0, 1, 2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Integer>() {
@@ -50,7 +50,6 @@ public class SimpleRxService {
                 Thread.sleep(2000);
                 e.onNext(1);
                 Thread.sleep(16);
-                e.onNext(1);
                 e.onError(new Exception("Throw an exception initiative."));
                 e.onComplete();
             }

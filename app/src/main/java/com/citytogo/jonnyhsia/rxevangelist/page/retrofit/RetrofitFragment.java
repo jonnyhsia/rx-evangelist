@@ -83,13 +83,13 @@ public class RetrofitFragment extends BaseFragment implements RetrofitContract.V
     public void showRequestSuccess(List<Story> storyList) {
         mTvConsole.appendLog("Request Success!\n");
         for (Story story : storyList) {
-            mTvConsole.appendLog(story.toString());
+            mTvConsole.appendLog(story.toString() + "\n");
         }
     }
 
     @Override
     public void showRequestFail(String errorMsg) {
-        mTvConsole.appendLog("Request failed.\n" + errorMsg);
+        mTvConsole.appendLog(String.format("Request failed.\n%s\n", errorMsg));
     }
 
     public RetrofitFragment() {
