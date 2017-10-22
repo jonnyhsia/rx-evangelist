@@ -14,7 +14,7 @@ import com.citytogo.jonnyhsia.rxevangelist.R
 
 /**
  * Created by JonnyHsia on 17/6/28.
- * 醒目标题的自定义 Toolbar
+ * 醒目标题的自定义 Toolbar (Kotlin)
  */
 class HighlightToolbar : FrameLayout {
 

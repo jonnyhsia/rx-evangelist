@@ -2,7 +2,6 @@ package com.citytogo.jonnyhsia.rxevangelist.page.simple;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import com.citytogo.jonnyhsia.rxevangelist.R;
 import com.citytogo.jonnyhsia.rxevangelist.page.base.BaseFragment;
+import com.citytogo.jonnyhsia.rxevangelist.widget.ConsoleTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +25,8 @@ public class SimpleRxFragment extends BaseFragment implements SimpleRxContract.V
     ImageView mImgBack;
     @BindView(R.id.tv_page_title)
     TextView mTvPageTitle;
+    @BindView(R.id.tv_console)
+    ConsoleTextView mTvConsole;
 
     private SimpleRxContract.Presenter mPresenter;
 
@@ -33,7 +35,7 @@ public class SimpleRxFragment extends BaseFragment implements SimpleRxContract.V
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_simple_rx, container, false);
         mUnbinder = ButterKnife.bind(this, view);
-        mTvPageTitle.setText(R.string.page_title_rx_retrofit);
+        mTvPageTitle.setText(R.string.page_title_simple_rx);
         return view;
     }
 
@@ -42,12 +44,23 @@ public class SimpleRxFragment extends BaseFragment implements SimpleRxContract.V
         mPresenter = presenter;
     }
 
-    public SimpleRxFragment() {
-
-    }
-
     @OnClick(R.id.img_back)
     void onBackClick() {
         goBack();
+    }
+
+    @OnClick({R.id.btn_simple_rx, R.id.btn_animate_text})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_simple_rx:
+                break;
+            case R.id.btn_animate_text:
+                mTvConsole.appendLog("typing effect...");
+                break;
+        }
+    }
+    
+    public SimpleRxFragment() {
+
     }
 }

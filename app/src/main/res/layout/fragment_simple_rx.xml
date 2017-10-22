@@ -7,22 +7,51 @@
 
     <include layout="@layout/app_bar_back"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:clipToPadding="false"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+
+        <Button
+            android:id="@+id/btn_simple_rx"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Stream"/>
+
+        <Button
+            android:id="@+id/btn_animate_text"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animate Text"/>
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="320dp"
         android:layout_gravity="bottom"
         android:layout_margin="20dp"
         android:background="@drawable/shape_console"
+        android:clipToPadding="false"
         android:elevation="6dp"
+        android:overScrollMode="never"
         android:padding="16dp">
 
-        <TextView
+        <com.citytogo.jonnyhsia.rxevangelist.widget.ConsoleTextView
             android:id="@+id/tv_console"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lineSpacingMultiplier="1.15"
-            android:textColor="@color/text_primary_reverse"
-            tools:text="Console:"/>
+            android:fontFamily="@string/roboto_medium"
+            android:letterSpacing="0.02"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/console_ready"
+            android:textColor="@color/console_highlight"
+            android:textSize="15sp"/>
 
     </ScrollView>
 

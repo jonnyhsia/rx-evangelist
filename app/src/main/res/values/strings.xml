@@ -6,5 +6,7 @@
     <string name="search_bar">COMPONENTS…</string>
     <string name="transition_search_bar">search_bar</string>
     <string name="page_title_rx_retrofit">Rx + Retrofit Sample</string>
+    <string name="console_ready">Everything is ready…</string>
+    <string name="page_title_simple_rx">Simple Rx Sample</string>
 
 </resources>

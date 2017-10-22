@@ -12,6 +12,9 @@ import android.widget.LinearLayout
 import android.widget.OverScroller
 import com.citytogo.jonnyhsia.rxevangelist.R
 
+/**
+ * 继承自 [LinearLayout] 实现的 Sticky 布局
+ */
 class StickyLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs), NestedScrollingParent {
 
     override fun onStartNestedScroll(child: View, target: View, nestedScrollAxes: Int): Boolean {
@@ -42,8 +45,6 @@ class StickyLayout(context: Context, attrs: AttributeSet) : LinearLayout(context
         }
     }
 
-    private val TOP_CHILD_FLING_THRESHOLD = 3
-
     override fun onNestedFling(target: View, velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
         var isConsumed = consumed
         // 如果是 recyclerView 根据判断第一个元素是哪个位置可以判断是否消耗
@@ -52,7 +53,7 @@ class StickyLayout(context: Context, attrs: AttributeSet) : LinearLayout(context
         if (target is RecyclerView && velocityY < 0) {
             val firstChild = target.getChildAt(0)
             val childAdapterPosition = target.getChildAdapterPosition(firstChild)
-            isConsumed = childAdapterPosition > TOP_CHILD_FLING_THRESHOLD
+            isConsumed = childAdapterPosition > Companion.TOP_CHILD_FLING_THRESHOLD
         }
         if (!isConsumed) {
             animateScroll(velocityY, computeDuration(0f), isConsumed)
@@ -219,7 +220,8 @@ class StickyLayout(context: Context, attrs: AttributeSet) : LinearLayout(context
         }
     }
 
-    /*companion object {
-        private val TAG = "StickyNavLayout"
-    }*/
+    companion object {
+        private val TOP_CHILD_FLING_THRESHOLD = 3
+        // private val TAG = "StickyNavLayout"
+    }
 }
