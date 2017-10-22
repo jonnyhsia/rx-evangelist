@@ -2,6 +2,7 @@ package com.citytogo.jonnyhsia.rxevangelist.page.base;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.citytogo.jonnyhsia.rxevangelist.App;
@@ -37,5 +38,13 @@ public class BaseFragment extends Fragment {
 
     public void showMessage(String message) {
         ToastUtil.showToast(App.getInstance(), message);
+    }
+
+    protected <T> T checkNull(@Nullable T t) {
+        if (t != null) {
+            return t;
+        } else {
+            throw new NullPointerException("A null value is checked.");
+        }
     }
 }

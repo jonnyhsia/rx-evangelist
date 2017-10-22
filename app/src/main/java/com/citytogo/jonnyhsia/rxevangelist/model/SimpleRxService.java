@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class SimpleRxService {
 
-    public void useJust(final OnSubscribeListener listener) {
+    public void useJust(@NonNull final OnSubscribeListener listener) {
         Observable.just(0, 1, 2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -77,7 +77,6 @@ public class SimpleRxService {
                     }
                 });
     }
-
 
     public interface OnSubscribeListener {
         void onSubscribe();

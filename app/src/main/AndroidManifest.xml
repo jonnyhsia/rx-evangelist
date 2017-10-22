@@ -28,6 +28,7 @@
         </activity>
         <activity android:name=".page.retrofit.RetrofitActivity">
         </activity>
+        <activity android:name=".page.debounce.DebounceActivity"/>
     </application>
 
 </manifest>

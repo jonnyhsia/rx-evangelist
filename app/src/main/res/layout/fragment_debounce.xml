@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.simple.SimpleRxFragment">
+    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.debounce.DebounceFragment">
 
     <include layout="@layout/app_bar_back"/>
 
@@ -29,25 +30,11 @@
             android:src="@mipmap/ic_close"/>
 
         <Button
-            android:id="@+id/btn_simple_create"
+            android:id="@+id/btn_debounce"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Use Create"/>
-
-        <Button
-            android:id="@+id/btn_simple_rx"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Use Just"/>
-
-        <Button
-            android:id="@+id/btn_animate_text"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Animate Text"/>
+            android:text="Debounce Button"/>
 
     </com.nex3z.flowlayout.FlowLayout>
 
@@ -69,7 +56,7 @@
             android:fontFamily="@string/roboto_medium"
             android:letterSpacing="0.02"
             android:lineSpacingMultiplier="1.2"
-            android:text="@string/console_ready"
+            android:text="@string/console_ready_debouce"
             android:textColor="@color/consoleHighlight"
             android:textSize="15sp"
             app:animate="false"/>

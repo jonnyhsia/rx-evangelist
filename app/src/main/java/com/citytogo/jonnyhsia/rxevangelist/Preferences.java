@@ -5,8 +5,8 @@ import android.preference.PreferenceManager;
 
 /**
  * Created by JonnyHsia on 17/10/21.
+ * Preferences
  */
-
 public class Preferences {
 
     private static final String USERNAME = "username";

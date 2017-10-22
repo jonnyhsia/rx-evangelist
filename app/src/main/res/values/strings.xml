@@ -9,5 +9,7 @@
     <string name="page_title_simple_rx">Simple Rx Sample</string>
     <string name="page_title_rx_retrofit">Rx + Retrofit Sample</string>
     <string name="page_title_complex">Complex Http Request Sample</string>
+    <string name="page_title_debouce">Debounce Sample</string>
+    <string name="console_ready_debouce">Everything is ready…\nClick x to clear the console;\nClick "Throttle First" to try rx-throttle-first.\n</string>
 
 </resources>

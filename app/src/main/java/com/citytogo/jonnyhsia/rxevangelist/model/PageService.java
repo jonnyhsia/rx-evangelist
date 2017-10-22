@@ -3,6 +3,8 @@ package com.citytogo.jonnyhsia.rxevangelist.model;
 import com.citytogo.jonnyhsia.rxevangelist.App;
 import com.citytogo.jonnyhsia.rxevangelist.R;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Category;
+import com.citytogo.jonnyhsia.rxevangelist.page.debounce.DebounceActivity;
+import com.citytogo.jonnyhsia.rxevangelist.page.debounce.DebounceFragment;
 import com.citytogo.jonnyhsia.rxevangelist.page.retrofit.RetrofitActivity;
 import com.citytogo.jonnyhsia.rxevangelist.page.simple.SimpleRxActivity;
 import com.citytogo.jonnyhsia.rxevangelist.page.timeline.TimelineActivity;
@@ -29,7 +31,7 @@ public class PageService {
                 R.drawable.shape_blue, R.drawable.shape_purple, R.drawable.shape_grey};
         Class<?>[] clsArray = new Class[]{
                 SimpleRxActivity.class, RetrofitActivity.class, SimpleRxActivity.class,
-                SimpleRxActivity.class, TimelineActivity.class, SimpleRxActivity.class};
+                SimpleRxActivity.class, DebounceActivity.class, SimpleRxActivity.class};
 
         List<Category> categoryList = new ArrayList<>(titles.length);
         for (int i = 0; i < titles.length; i++) {
