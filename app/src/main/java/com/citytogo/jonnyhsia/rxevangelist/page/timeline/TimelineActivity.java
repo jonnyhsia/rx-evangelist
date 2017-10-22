@@ -8,7 +8,7 @@ import com.citytogo.jonnyhsia.rxevangelist.R;
 import com.citytogo.jonnyhsia.rxevangelist.model.Injection;
 
 public class TimelineActivity extends AppCompatActivity {
-    private TimelinePresenter presenter;
+    private TimelinePresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +17,14 @@ public class TimelineActivity extends AppCompatActivity {
 
         String username = Preferences.getUsername(this);
         TimelineFragment fragment = new TimelineFragment();
-        presenter = new TimelinePresenter(fragment, Injection.getStoryService(), username);
+        mPresenter = new TimelinePresenter(fragment, Injection.getStoryService(), username);
+        fragment.bindPresenter(mPresenter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        presenter.dispose();
+        mPresenter.dispose();
     }
 }

@@ -18,7 +18,6 @@ class MainPresenter implements MainContract.Presenter {
 
     MainPresenter(MainContract.View view, PageService pageService) {
         mView = view;
-        mView.bindPresenter(this);
         mPageService = pageService;
     }
 

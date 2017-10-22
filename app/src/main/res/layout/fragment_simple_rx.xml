@@ -7,4 +7,23 @@
 
     <include layout="@layout/app_bar_back"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_console"
+        android:elevation="6dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_console"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.15"
+            android:textColor="@color/text_primary_reverse"
+            tools:text="Console:"/>
+
+    </ScrollView>
+
 </android.support.design.widget.CoordinatorLayout>

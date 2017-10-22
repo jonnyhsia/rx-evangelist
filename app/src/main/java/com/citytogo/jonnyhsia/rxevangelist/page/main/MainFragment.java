@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.citytogo.jonnyhsia.rxevangelist.R;
+import com.citytogo.jonnyhsia.rxevangelist.helper.Kits;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Category;
 import com.citytogo.jonnyhsia.rxevangelist.page.base.BaseFragment;
 
@@ -53,8 +54,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
             }
         });
         mAdapter.register(Category.class, binder);
+
+        int spanCount = 2;
+        if (!Kits.UI.isScreenOrientationPortrait(getActivity())) {
+            spanCount = 4;
+        }
+        mRecyclerCategory.setLayoutManager(new GridLayoutManager(getActivity(), spanCount));
         mRecyclerCategory.setHasFixedSize(true);
-        mRecyclerCategory.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRecyclerCategory.setAdapter(mAdapter);
         mPresenter.setUpRecyclerView();
     }

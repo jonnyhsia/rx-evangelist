@@ -8,6 +8,7 @@
     <color name="white70">#B3FFFFFF</color>
     <color name="white50">#80FFFFFF</color>
     <color name="white30">#4DFFFFFF</color>
+    <color name="white16">#29FFFFFF</color>
 
     <color name="black">#000000</color>
     <color name="black87">#DE000000</color>
@@ -23,6 +24,12 @@
     <color name="text_caption">@color/black38</color>
     <color name="text_disable">@color/black26</color>
     <color name="text_ignorable">@color/black20</color>
+
+    <color name="text_primary_reverse">@color/white</color>
+    <color name="text_secondary_reverse">@color/white70</color>
+    <color name="text_caption_reverse">@color/white50</color>
+    <color name="text_disable_reverse">@color/white30</color>
+    <color name="text_ignorable_reverse">@color/white16</color>
 
     <color name="search_bar">#F9F9F9</color>
     <color name="search_bar_pressed">#F2F2F2</color>
