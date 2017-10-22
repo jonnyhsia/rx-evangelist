@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.widget.ScrollView;
 
 import com.citytogo.jonnyhsia.rxevangelist.R;
 
@@ -15,6 +17,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -44,6 +47,13 @@ public class ConsoleTextView extends AppCompatTextView {
      */
     private Disposable mDisposable;
 
+    private Disposable mTimerDisposable;
+
+    /**
+     * 是否保持显示最底部
+     */
+    private boolean isStayBottom = true;
+
     public ConsoleTextView(Context context) {
         super(context);
         init(context, null);
@@ -63,6 +73,7 @@ public class ConsoleTextView extends AppCompatTextView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ConsoleTextView);
         mDuration = typedArray.getInt(R.styleable.ConsoleTextView_duration, 500);
         isAnimate = typedArray.getBoolean(R.styleable.ConsoleTextView_animate, true);
+        isStayBottom = typedArray.getBoolean(R.styleable.ConsoleTextView_stayBottom, true);
 
         typedArray.recycle();
     }
@@ -190,6 +201,9 @@ public class ConsoleTextView extends AppCompatTextView {
         if (mDisposable != null) {
             mDisposable.dispose();
         }
+        if (mTimerDisposable != null) {
+            mTimerDisposable.dispose();
+        }
     }
 
     public long getDuration() {
@@ -214,5 +228,34 @@ public class ConsoleTextView extends AppCompatTextView {
 
     public void setDebug(boolean debug) {
         isDebug = debug;
+    }
+
+    public boolean isStayBottom() {
+        return isStayBottom;
+    }
+
+    public void setStayBottom(boolean stayBottom) {
+        isStayBottom = stayBottom;
+    }
+
+    @Override
+    public void append(CharSequence text, int start, int end) {
+        super.append(text, start, end);
+
+        if (!isStayBottom) {
+            return;
+        }
+
+        if (getParent() instanceof ScrollView) {
+            final ScrollView scrollView = (ScrollView) getParent();
+            // 不能直接调用方法 scroll 到底部
+            // 使用 View.post 保证任务在视图操作中按序执行
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                }
+            });
+        }
     }
 }

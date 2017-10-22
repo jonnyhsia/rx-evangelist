@@ -14,5 +14,6 @@
     <declare-styleable name="ConsoleTextView">
         <attr name="animate" format="boolean"/>
         <attr name="duration" format="integer"/>
+        <attr name="stayBottom" format="boolean"/>
     </declare-styleable>
 </resources>
