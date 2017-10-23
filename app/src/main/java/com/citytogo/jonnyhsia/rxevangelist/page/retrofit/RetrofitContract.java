@@ -21,6 +21,8 @@ class RetrofitContract {
         void clearConsole();
 
         void requestTimelineByVolley();
+
+        void requestTimelineByCall();
     }
 
     interface View extends BaseView<Presenter> {

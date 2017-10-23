@@ -1,5 +1,8 @@
 package com.citytogo.jonnyhsia.rxevangelist.model;
 
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
@@ -15,6 +18,8 @@ import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 import static com.android.volley.Response.*;
 
@@ -67,11 +72,28 @@ public class RetrofitService {
                 });
     }
 
-    private StoryApi useApi() {
-        if (mStoryApi == null) {
-            mStoryApi = Injection.getRetrofitInstance(BASE_URL_STORY).create(StoryApi.class);
-        }
-        return mStoryApi;
+    public void getTimelineByCall(String username, int offset, int limit, final OnTimelineRequestListener listener) {
+        useApi().getTimelineByCall(username, offset, limit).enqueue(new Callback<Response<List<Story>>>() {
+            @Override
+            public void onResponse(@NonNull Call<Response<List<Story>>> call, @NonNull retrofit2.Response<Response<List<Story>>> response) {
+                Response<List<Story>> timelineResponse = response.body();
+
+                if (timelineResponse == null) {
+                    return;
+                }
+                if (!timelineResponse.isSuccess()) {
+                    listener.onError(timelineResponse.getError());
+                    return;
+                }
+
+                listener.onSuccess(timelineResponse.getData());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Response<List<Story>>> call, @NonNull Throwable t) {
+                listener.onError(t.getMessage());
+            }
+        });
     }
 
     public void getTimelineByVolley(String username, int offset, int limit, final OnTimelineVolleyRequestListener listener) {
@@ -88,6 +110,13 @@ public class RetrofitService {
             }
         });
         mQueue.add(request);
+    }
+
+    private StoryApi useApi() {
+        if (mStoryApi == null) {
+            mStoryApi = Injection.getRetrofitInstance(BASE_URL_STORY).create(StoryApi.class);
+        }
+        return mStoryApi;
     }
 
     public interface OnTimelineRequestListener {

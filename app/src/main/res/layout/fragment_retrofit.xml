@@ -36,6 +36,13 @@
             android:text="Retrofit"/>
 
         <Button
+            android:id="@+id/btn_request_okhttp"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OkHttp"/>
+
+        <Button
             android:id="@+id/btn_request_volley"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"

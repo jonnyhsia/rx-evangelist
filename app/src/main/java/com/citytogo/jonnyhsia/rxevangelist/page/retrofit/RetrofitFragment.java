@@ -48,7 +48,7 @@ public class RetrofitFragment extends BaseFragment implements RetrofitContract.V
         goBack();
     }
 
-    @OnClick({R.id.btn_clear, R.id.btn_request_retrofit, R.id.btn_request_volley})
+    @OnClick({R.id.btn_clear, R.id.btn_request_retrofit, R.id.btn_request_okhttp, R.id.btn_request_volley})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_clear:
@@ -56,6 +56,9 @@ public class RetrofitFragment extends BaseFragment implements RetrofitContract.V
                 break;
             case R.id.btn_request_retrofit:
                 mPresenter.requestTimeline();
+                break;
+            case R.id.btn_request_okhttp:
+                mPresenter.requestTimelineByCall();
                 break;
             case R.id.btn_request_volley:
                 mPresenter.requestTimelineByVolley();

@@ -42,6 +42,23 @@ class RetrofitPresenter implements RetrofitContract.Presenter {
     }
 
     @Override
+    public void requestTimelineByCall() {
+        String username = "supotato";
+        mView.showRequesting();
+        mRxService.getTimelineByCall(username, 0, 20, new RetrofitService.OnTimelineRequestListener() {
+            @Override
+            public void onSuccess(List<Story> data) {
+                mView.showRequestSuccess(data);
+            }
+
+            @Override
+            public void onError(String message) {
+                mView.showRequestFailed(message);
+            }
+        });
+    }
+
+    @Override
     public void clearConsole() {
         mView.showConsoleCleared();
     }
