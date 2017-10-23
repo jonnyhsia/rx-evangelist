@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 /**
  * Created by JonnyHsia on 17/10/22.
+ * Toast 工具类
  */
 public class ToastUtil {
     private static Toast sToast;
@@ -14,11 +15,15 @@ public class ToastUtil {
         if (TextUtils.isEmpty(message)) {
             return;
         }
+
         if (null == context) {
             return;
         }
 
-        sToast.cancel();
+        if (sToast != null) {
+            sToast.cancel();
+        }
+
         sToast = null;
         sToast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
         sToast.show();
