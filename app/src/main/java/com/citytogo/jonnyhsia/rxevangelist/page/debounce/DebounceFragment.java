@@ -42,9 +42,10 @@ public class DebounceFragment extends BaseFragment implements DebounceContract.V
         View view = inflater.inflate(R.layout.fragment_debounce, container, false);
         mUnbinder = ButterKnife.bind(this, view);
 
-        mTvConsole.setDebug(false);
         mTvPageTitle.setText(R.string.page_title_debouce);
 
+        // 通过 RxBinding 实现把点击事件转换成 Observable
+        // 并通过 throttleFirst 实现按钮点击的 "防抖"
         RxView.clicks(mBtnDebounce)
                 .throttleFirst(2000, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {

@@ -27,6 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 public class ConsoleTextView extends AppCompatTextView {
 
     private static final long MIN_PERIOD = 16;
+
     /**
      * 打字动画的时长
      */
@@ -40,14 +41,12 @@ public class ConsoleTextView extends AppCompatTextView {
     /**
      * 是否输出其他日志
      */
-    private boolean isDebug;
+    private boolean isDebug = false;
 
     /**
      * Disposable
      */
     private Disposable mDisposable;
-
-    private Disposable mTimerDisposable;
 
     /**
      * 是否保持显示最底部
@@ -200,9 +199,6 @@ public class ConsoleTextView extends AppCompatTextView {
 
         if (mDisposable != null) {
             mDisposable.dispose();
-        }
-        if (mTimerDisposable != null) {
-            mTimerDisposable.dispose();
         }
     }
 

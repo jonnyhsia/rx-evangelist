@@ -29,11 +29,18 @@
             android:src="@mipmap/ic_close"/>
 
         <Button
-            android:id="@+id/btn_request_timeline"
+            android:id="@+id/btn_request_retrofit"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Request Timeline"/>
+            android:text="Retrofit"/>
+
+        <Button
+            android:id="@+id/btn_request_volley"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volley"/>
 
     </com.nex3z.flowlayout.FlowLayout>
 

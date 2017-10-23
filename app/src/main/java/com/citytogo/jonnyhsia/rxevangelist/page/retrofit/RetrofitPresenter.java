@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by JonnyHsia on 17/10/22.
+ * Retrofit Presenter
  */
 class RetrofitPresenter implements RetrofitContract.Presenter {
 
@@ -35,7 +36,7 @@ class RetrofitPresenter implements RetrofitContract.Presenter {
 
             @Override
             public void onError(String message) {
-                mView.showRequestFail(message);
+                mView.showRequestFailed(message);
             }
         });
     }
@@ -43,5 +44,22 @@ class RetrofitPresenter implements RetrofitContract.Presenter {
     @Override
     public void clearConsole() {
         mView.showConsoleCleared();
+    }
+
+    @Override
+    public void requestTimelineByVolley() {
+        String username = "supotato";
+        mView.showRequesting();
+        mRxService.getTimelineByVolley(username, 0, 20, new RetrofitService.OnTimelineVolleyRequestListener() {
+            @Override
+            public void onSuccess(String response) {
+                mView.showLog(String.format("\n%s…", response.substring(0, 200)));
+            }
+
+            @Override
+            public void onError(String message) {
+                mView.showRequestFailed(message);
+            }
+        });
     }
 }

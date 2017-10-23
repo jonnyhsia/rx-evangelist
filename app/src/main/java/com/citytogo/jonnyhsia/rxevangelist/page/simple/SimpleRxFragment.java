@@ -37,7 +37,6 @@ public class SimpleRxFragment extends BaseFragment implements SimpleRxContract.V
         View view = inflater.inflate(R.layout.fragment_simple_rx, container, false);
         mUnbinder = ButterKnife.bind(this, view);
 
-        mTvConsole.setDebug(false);
         mTvPageTitle.setText(R.string.page_title_simple_rx);
 
         return view;

@@ -1,13 +1,22 @@
 package com.citytogo.jonnyhsia.rxevangelist.model;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.citytogo.jonnyhsia.rxevangelist.App;
 import com.citytogo.jonnyhsia.rxevangelist.http.RxHttpSchedulers;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Response;
 import com.citytogo.jonnyhsia.rxevangelist.model.entity.Story;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
+
+import static com.android.volley.Response.*;
 
 /**
  * Created by JonnyHsia on 17/10/21.
@@ -20,6 +29,8 @@ public class RetrofitService {
     private StoryApi mStoryApi;
 
     private CompositeDisposable mDisposable = new CompositeDisposable();
+
+    private RequestQueue mQueue = Volley.newRequestQueue(App.getInstance());
 
     /**
      * 避免内存泄漏
@@ -63,9 +74,32 @@ public class RetrofitService {
         return mStoryApi;
     }
 
+    public void getTimelineByVolley(String username, int offset, int limit, final OnTimelineVolleyRequestListener listener) {
+        String url = String.format("%sstory/%s/timeline?offset=%s&limit=%s", BASE_URL_STORY, username, offset, limit);
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                listener.onSuccess(response);
+            }
+        }, new ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                listener.onError(volleyError.getMessage());
+            }
+        });
+        mQueue.add(request);
+    }
+
     public interface OnTimelineRequestListener {
 
         void onSuccess(List<Story> data);
+
+        void onError(String message);
+    }
+
+    public interface OnTimelineVolleyRequestListener {
+
+        void onSuccess(String response);
 
         void onError(String message);
     }
