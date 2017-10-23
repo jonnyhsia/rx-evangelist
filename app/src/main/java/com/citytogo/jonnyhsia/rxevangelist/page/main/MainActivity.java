@@ -27,9 +27,7 @@ public class MainActivity extends BaseActivity {
         mPresenter = new MainPresenter(mFragment, Injection.getPageService());
         mFragment.bindPresenter(mPresenter);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, mFragment, TAG_FRAG)
-                .commit();
+        replaceFragment(mFragment);
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 
 import com.citytogo.jonnyhsia.rxevangelist.App;
 
+import java.util.Random;
 import java.util.regex.Pattern;
 
 /**
@@ -51,5 +52,17 @@ public class Kits {
      */
     public static String deleteBlankline(String input) {
         return input.replace("((\r\n)|\n)[\\s\t ]*(\\1)+", "$1");
+    }
+
+    public static String generateRandomString() {
+        String base = "兔狗科技爪哇随机用户名尧婕鹏贵楠德豆岚";
+        Random random = new Random();
+        int randomLength = Math.max(5, random.nextInt(base.length()));
+        StringBuffer buffer = new StringBuffer();
+
+        for (int i = 0; i < randomLength; i++) {
+            buffer.append(base.charAt(random.nextInt(base.length())));
+        }
+        return buffer.toString();
     }
 }

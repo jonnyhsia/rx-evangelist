@@ -66,10 +66,9 @@
             android:id="@+id/tv_console"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@string/roboto_medium"
             android:letterSpacing="0.02"
             android:lineSpacingMultiplier="1.2"
-            android:text="@string/console_ready"
+            android:text="@string/console_ready_retrofit"
             android:textColor="@color/consoleHighlight"
             android:textSize="15sp"
             app:animate="false"/>

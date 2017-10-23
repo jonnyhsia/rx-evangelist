@@ -2,6 +2,7 @@ package com.citytogo.jonnyhsia.rxevangelist.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
@@ -75,6 +76,8 @@ public class ConsoleTextView extends AppCompatTextView {
         isStayBottom = typedArray.getBoolean(R.styleable.ConsoleTextView_stayBottom, true);
 
         typedArray.recycle();
+
+        setTypeface(null, Typeface.BOLD);
     }
 
     /**

@@ -29,6 +29,8 @@
         <activity android:name=".page.retrofit.RetrofitActivity">
         </activity>
         <activity android:name=".page.debounce.DebounceActivity"/>
+        <activity android:name=".page.complex.ComplexActivity">
+        </activity>
     </application>
 
 </manifest>

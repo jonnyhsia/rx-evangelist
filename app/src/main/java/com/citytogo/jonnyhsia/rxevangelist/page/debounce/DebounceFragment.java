@@ -37,6 +37,11 @@ public class DebounceFragment extends BaseFragment implements DebounceContract.V
     DebounceContract.Presenter mPresenter;
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_debounce, container, false);
@@ -82,7 +87,7 @@ public class DebounceFragment extends BaseFragment implements DebounceContract.V
 
     @Override
     public void showConsoleCleared() {
-        mTvConsole.setText(getString(R.string.console_ready_debouce));
+        mTvConsole.setText(getString(R.string.console_ready_debounce));
     }
 
     @Override

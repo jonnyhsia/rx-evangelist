@@ -26,7 +26,6 @@
         android:background="@drawable/shape_search_bar"
         android:cursorVisible="false"
         android:focusableInTouchMode="false"
-        android:fontFamily="@string/roboto_medium"
         android:gravity="center_vertical"
         android:hint="@string/search_bar"
         android:letterSpacing="0.05"

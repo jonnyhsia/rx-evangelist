@@ -2,14 +2,15 @@
     <string name="app_name">RxEvangelist</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="roboto_medium">sans-serif-medium</string>
     <string name="search_bar">COMPONENTS…</string>
     <string name="transition_search_bar">search_bar</string>
-    <string name="console_ready">Everything is ready…\n</string>
     <string name="page_title_simple_rx">Simple Rx Sample</string>
     <string name="page_title_rx_retrofit">Rx + Retrofit Sample</string>
-    <string name="page_title_complex">Complex Http Request Sample</string>
+    <string name="page_title_complex">Complex Http Request</string>
     <string name="page_title_debouce">Debounce Sample</string>
-    <string name="console_ready_debouce">Everything is ready…\nClick x to clear the console;\nClick "Throttle First" to try rx-throttle-first.\n</string>
+    <string name="console_ready">\> Hello RxJava.</string>
+    <string name="console_ready_retrofit">万事俱备…\n比较一下 Retrofit 与其他网络请求框架之间的区别吧 (当然日志输出并没有什么大的不同</string>
+    <string name="console_ready_complex">万事俱备…\n尝试使用 RxJava + Retrofit 解决更多更复杂的网络请求吧。</string>
+    <string name="console_ready_debounce">万事俱备…\n尝试 RxJava 在其他场景下的使用吧。</string>
 
 </resources>

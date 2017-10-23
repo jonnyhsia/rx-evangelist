@@ -20,9 +20,7 @@ public class DebounceActivity extends BaseActivity {
         mPresenter = new DebouncePresenter(mFragment);
         mFragment.bindPresenter(mPresenter);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, mFragment)
-                .commit();
+        replaceFragment(mFragment);
     }
 
     @Override

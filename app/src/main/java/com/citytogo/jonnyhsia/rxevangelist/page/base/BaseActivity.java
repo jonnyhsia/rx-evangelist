@@ -2,9 +2,13 @@ package com.citytogo.jonnyhsia.rxevangelist.page.base;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+
+import com.citytogo.jonnyhsia.rxevangelist.R;
 
 /**
  * Created by JonnyHsia on 17/10/22.
@@ -39,5 +43,15 @@ public class BaseActivity extends AppCompatActivity {
      */
     protected void onCreateHaveSavedInstanceState(@NonNull Bundle savedInstanceState) {
 
+    }
+
+    protected void replaceFragment(Fragment fragment) {
+        replaceFragment(fragment, R.id.container);
+    }
+
+    protected void replaceFragment(Fragment fragment, @IdRes int containerId) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(containerId, fragment, TAG_FRAG)
+                .commit();
     }
 }

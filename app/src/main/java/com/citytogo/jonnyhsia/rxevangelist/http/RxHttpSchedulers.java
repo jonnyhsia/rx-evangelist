@@ -2,6 +2,9 @@ package com.citytogo.jonnyhsia.rxevangelist.http;
 
 import com.citytogo.jonnyhsia.rxevangelist.helper.Kits;
 
+import io.reactivex.Completable;
+import io.reactivex.CompletableSource;
+import io.reactivex.CompletableTransformer;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -28,10 +31,23 @@ public class RxHttpSchedulers {
                         .doOnSubscribe(new Consumer<Disposable>() {
                             @Override
                             public void accept(Disposable disposable) throws Exception {
-                                if (!Kits.checkNetwork() && !disposable.isDisposed()) {
-                                    disposable.dispose();
-                                    throw new Exception("Network is unavailable");
-                                }
+                                checkNetworkOnSubscribe(disposable);
+                            }
+                        });
+            }
+        };
+    }
+
+    public static <T> CompletableTransformer composeCompletable() {
+        return new CompletableTransformer() {
+            @Override
+            public CompletableSource apply(Completable upstream) {
+                return upstream.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(Disposable disposable) throws Exception {
+                                checkNetworkOnSubscribe(disposable);
                             }
                         });
             }
@@ -47,13 +63,21 @@ public class RxHttpSchedulers {
                         .doOnSubscribe(new Consumer<Disposable>() {
                             @Override
                             public void accept(Disposable disposable) throws Exception {
-                                if (!Kits.checkNetwork() && !disposable.isDisposed()) {
-                                    disposable.dispose();
-                                    throw new Exception("Network is unavailable");
-                                }
+                                checkNetworkOnSubscribe(disposable);
                             }
                         });
             }
         };
+    }
+
+    /**
+     * 建立订阅时检查网络是否可用
+     * @throws Exception 网络不可用则抛出异常
+     */
+    private static void checkNetworkOnSubscribe(Disposable disposable) throws Exception {
+        if (!Kits.checkNetwork() && !disposable.isDisposed()) {
+            disposable.dispose();
+            throw new Exception("Network is unavailable");
+        }
     }
 }

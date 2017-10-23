@@ -73,7 +73,7 @@ public class RetrofitFragment extends BaseFragment implements RetrofitContract.V
 
     @Override
     public void showConsoleCleared() {
-        mTvConsole.setText(getString(R.string.console_ready));
+        mTvConsole.setText(getString(R.string.console_ready_retrofit));
     }
 
     @Override

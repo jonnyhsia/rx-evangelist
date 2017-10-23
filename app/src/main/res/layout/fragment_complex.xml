@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.debounce.DebounceFragment">
+
+    tools:context="com.citytogo.jonnyhsia.rxevangelist.page.complex.ComplexFragment">
 
     <include layout="@layout/app_bar_back"/>
 
@@ -30,11 +31,11 @@
             android:src="@mipmap/ic_close"/>
 
         <Button
-            android:id="@+id/btn_debounce"
+            android:id="@+id/btn_complex_request"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Debounce Button"/>
+            android:text="Complex Request"/>
 
     </com.nex3z.flowlayout.FlowLayout>
 
@@ -53,9 +54,10 @@
             android:id="@+id/tv_console"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:letterSpacing="0.02"
             android:lineSpacingMultiplier="1.2"
-            android:text="@string/console_ready_debounce"
+            android:text="@string/console_ready_complex"
             android:textColor="@color/consoleHighlight"
             android:textSize="15sp"
             app:animate="false"/>
