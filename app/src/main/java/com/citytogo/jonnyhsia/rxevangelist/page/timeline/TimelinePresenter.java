@@ -30,7 +30,7 @@ public class TimelinePresenter implements TimelineContract.Presenter {
     @Override
     public void requestTimeline() {
         int limit = 20;
-        mStoryModel.getTimeline(mUsername, offset, limit, new RetrofitService.OnTimelineRequestListener() {
+        /*mStoryModel.getTimeline(mUsername, offset, limit, new RetrofitService.OnTimelineRequestListener() {
             @Override
             public void onSuccess(List<Story> data) {
                 // 判断数据是否为 null 或 empty
@@ -45,7 +45,7 @@ public class TimelinePresenter implements TimelineContract.Presenter {
             public void onError(String message) {
                 mView.loadFail(message);
             }
-        });
+        });*/
     }
 
     @Override

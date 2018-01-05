@@ -47,4 +47,8 @@ public class BaseFragment extends Fragment {
             throw new NullPointerException("A null value is checked.");
         }
     }
+
+    public boolean isActive() {
+        return mUnbinder != null;
+    }
 }

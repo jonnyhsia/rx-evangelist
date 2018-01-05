@@ -55,14 +55,14 @@ public class Kits {
     }
 
     public static String generateRandomString() {
-        String base = "兔狗科技爪哇随机用户名尧婕鹏贵楠德豆岚";
+        String base = "兔狗科技爪哇随机用户名";
         Random random = new Random();
         int randomLength = Math.max(5, random.nextInt(base.length()));
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < randomLength; i++) {
-            buffer.append(base.charAt(random.nextInt(base.length())));
+            builder.append(base.charAt(random.nextInt(base.length())));
         }
-        return buffer.toString();
+        return builder.toString();
     }
 }

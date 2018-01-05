@@ -31,6 +31,8 @@
         <activity android:name=".page.debounce.DebounceActivity"/>
         <activity android:name=".page.complex.ComplexActivity">
         </activity>
+        <activity android:name=".page.scheduler.SchedulerActivity">
+        </activity>
     </application>
 
 </manifest>

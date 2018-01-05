@@ -15,4 +15,6 @@ public interface BaseView<P> {
     void bindPresenter(@NonNull P presenter);
 
     void showMessage(String msg);
+
+    boolean isActive();
 }

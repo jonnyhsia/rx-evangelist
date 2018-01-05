@@ -18,25 +18,41 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by JonnyHsia on 17/10/22.
- * Rx HTTP Schedulers
+ * 线程调度封装
  */
 public class RxHttpSchedulers {
 
     public static <T> SingleTransformer<T, T> composeSingle() {
+        // 返回一个 Single 类型的观察者的 Transformer
         return new SingleTransformer<T, T>() {
             @Override
             public SingleSource<T> apply(Single<T> upstream) {
+                // 给"上游"的 Single<T> 设置线程的调度与网络判断后传递给下游
                 return upstream.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(new Consumer<Disposable>() {
                             @Override
-                            public void accept(Disposable disposable) throws Exception {
-                                checkNetworkOnSubscribe(disposable);
+                            public void accept(Disposable d) throws Exception {
+                                // 检查网络可用性
+                                checkNetworkOnSubscribe(d);
                             }
                         });
             }
         };
     }
+
+    /**
+     * 建立订阅时检查网络是否可用，若不可用直接切断
+     *
+     * @throws Exception 网络不可用则抛出异常
+     */
+    private static void checkNetworkOnSubscribe(Disposable disposable) throws Exception {
+        if (!Kits.checkNetwork() && !disposable.isDisposed()) {
+            disposable.dispose();
+            throw new Exception("Network is unavailable");
+        }
+    }
+
 
     public static <T> CompletableTransformer composeCompletable() {
         return new CompletableTransformer() {
@@ -70,14 +86,4 @@ public class RxHttpSchedulers {
         };
     }
 
-    /**
-     * 建立订阅时检查网络是否可用
-     * @throws Exception 网络不可用则抛出异常
-     */
-    private static void checkNetworkOnSubscribe(Disposable disposable) throws Exception {
-        if (!Kits.checkNetwork() && !disposable.isDisposed()) {
-            disposable.dispose();
-            throw new Exception("Network is unavailable");
-        }
-    }
 }

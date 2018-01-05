@@ -12,11 +12,11 @@ class ComplexPresenter implements ComplexContract.Presenter {
 
     private ComplexContract.View mView;
 
-    private RetrofitService mService;
+    private RetrofitService mUserService;
 
     ComplexPresenter(ComplexContract.View view, RetrofitService service) {
         mView = view;
-        mService = service;
+        mUserService = service;
     }
 
     @Override
@@ -35,30 +35,40 @@ class ComplexPresenter implements ComplexContract.Presenter {
         String password = "qwerty";
         String email = "test@citytogo.com";
         mView.showRequesting(String.format("尝试注册用户 %s, 密码为%s, 邮箱为%s.", username, password, email));
-        mService.register(username, password, email, new RetrofitService.OnRegisterListener() {
+        mUserService.register(username, password, email, new RetrofitService.OnRegisterListener() {
             @Override
             public void onRegisterSuccess() {
-                mView.showRegisterSuccess();
+                if (mView.isActive()) {
+                    mView.showRegisterSuccess();
+                }
             }
 
             @Override
             public void onRegisterError(String message) {
-                mView.showRegisterError(message);
+                if (mView.isActive()) {
+                    mView.showRegisterError(message);
+                }
             }
 
             @Override
             public void onLoginError(String message) {
-                mView.showLoginError(message);
+                if (mView.isActive()) {
+                    mView.showLoginError(message);
+                }
             }
 
             @Override
             public void onLoginSuccess(User user) {
-                mView.showLoginSuccess(user);
+                if (mView.isActive()) {
+                    mView.showLoginSuccess(user);
+                }
             }
 
             @Override
             public void onRequestFinished() {
-                mView.showRequestFinished();
+                if (mView.isActive()) {
+                    mView.showRequestFinished();
+                }
             }
         });
     }

@@ -2,6 +2,8 @@ package com.citytogo.jonnyhsia.rxevangelist.page.simple;
 
 import com.citytogo.jonnyhsia.rxevangelist.model.SimpleRxService;
 
+import io.reactivex.disposables.Disposable;
+
 /**
  * Created by JonnyHsia on 17/10/22.
  * Simple Rx Presenter
@@ -33,9 +35,9 @@ class SimpleRxPresenter implements SimpleRxContract.Presenter {
 
     @Override
     public void simpleJust() {
-        mRxService.useJust(new SimpleRxService.OnSubscribeListener() {
+        mRxService.useJust(new SimpleRxService.OnSubscribeCallback() {
             @Override
-            public void onSubscribe() {
+            public void onSubscribe(Disposable disposable) {
                 mView.showLog("onSubscribe.");
             }
 
@@ -58,9 +60,9 @@ class SimpleRxPresenter implements SimpleRxContract.Presenter {
 
     @Override
     public void simpleCreate() {
-        mRxService.useCreate(new SimpleRxService.OnSubscribeListener() {
+        mRxService.useCreate(new SimpleRxService.OnSubscribeCallback() {
             @Override
-            public void onSubscribe() {
+            public void onSubscribe(Disposable disposable) {
                 mView.showLog("There will be a onNext(1) call after 2 seconds," +
                         " an exception will be thrown and" +
                         " the following methods [onNext(2), onComplete()] will not be called.");

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -30,12 +31,16 @@ public interface StoryApi {
      * @param username 用户名
      * @param offset   时间线页数
      * @param limit    每页获取的故事篇数
-     * @return 含有 Story 集合的 Response 的 Single 类型的被观察者
      */
     @GET("story/{username}/timeline")
-    Single<Response<List<Story>>> getTimeline(@Path("username") String username,
-                                              @Query("offset") int offset,
-                                              @Query("limit") int limit);
+    Observable<Response<List<Story>>> getTimeline(@Path("username") String username,
+                                                  @Query("offset") int offset,
+                                                  @Query("limit") int limit);
+
+    @GET("story/{username}/timeline")
+    Single<Response<List<Story>>> getStoryTimeline(@Path("username") String username,
+                                                   @Query("offset") int offset,
+                                                   @Query("limit") int limit);
 
     @POST("user/register")
     @FormUrlEncoded

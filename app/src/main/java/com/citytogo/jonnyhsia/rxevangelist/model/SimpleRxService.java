@@ -16,34 +16,34 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class SimpleRxService {
 
-    public void useJust(@NonNull final OnSubscribeListener listener) {
+    public void useJust(@NonNull final OnSubscribeCallback callback) {
         Observable.just(0, 1, 2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Integer>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        listener.onSubscribe();
+                        callback.onSubscribe(d);
                     }
 
                     @Override
                     public void onNext(Integer integer) {
-                        listener.onNext(integer);
+                        callback.onNext(integer);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onError(e);
+                        callback.onError(e);
                     }
 
                     @Override
                     public void onComplete() {
-                        listener.onComplete();
+                        callback.onComplete();
                     }
                 });
     }
 
-    public void useCreate(@NonNull final OnSubscribeListener listener) {
+    public void useCreate(@NonNull final OnSubscribeCallback callback) {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
@@ -58,28 +58,28 @@ public class SimpleRxService {
                 .subscribe(new Observer<Integer>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        listener.onSubscribe();
+                        callback.onSubscribe(d);
                     }
 
                     @Override
                     public void onNext(Integer integer) {
-                        listener.onNext(integer);
+                        callback.onNext(integer);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        listener.onError(e);
+                        callback.onError(e);
                     }
 
                     @Override
                     public void onComplete() {
-                        listener.onComplete();
+                        callback.onComplete();
                     }
                 });
     }
 
-    public interface OnSubscribeListener {
-        void onSubscribe();
+    public interface OnSubscribeCallback {
+        void onSubscribe(Disposable disposable);
 
         void onNext(Integer integer);
 
